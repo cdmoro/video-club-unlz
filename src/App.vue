@@ -1,52 +1,45 @@
 <template>
   <v-app>
     <v-navigation-drawer
+    v-model="drawer"
       app
       clipped
     >
       <v-list>
         <v-list-item to="/">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>Inicio</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item to="/login">
+          <v-list-item-icon>
+            <v-icon>mdi-lock</v-icon>
+          </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item to="/about">
+          <v-list-item-icon>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>About...</v-list-item-title>
+            <v-list-item-title>Nosotros</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
       app
-      clipped-left
-      color="primary"
+      color="indigo"
       dark
+      clipped-left
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Pelis plus</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -64,7 +57,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    drawer: null
   }),
 };
 </script>
