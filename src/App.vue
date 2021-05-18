@@ -134,8 +134,8 @@ export default {
       }
 
       menu.push({
-        title: 'Nosotros',
-        to: '/about',
+        title: 'Información',
+        to: '/informacion',
         icon: 'mdi-information'
       })
 

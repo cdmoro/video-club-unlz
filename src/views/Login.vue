@@ -25,7 +25,7 @@
       <v-btn class="mt-4 mb-2" color="primary" dark @click="login"
         >Ingresar</v-btn
       >
-      <div>¿Olvidaste tu contraseña? <router-link to="/recuperar-contraseña">Recuperar contraseña</router-link></div>
+      <div>¿Olvidaste tu contraseña? <router-link to="/recuperar-contrasena">Recuperar contraseña</router-link></div>
       <div>
         ¿No tenés cuenta? <router-link to="/registro">Registrate</router-link>
       </div>
@@ -34,9 +34,12 @@
 </template>
 
 <script>
-import User from '../models/User';
+import USERS from '../users';
 
 export default {
+  mounted() {
+    console.log(USERS);
+  },
   data() {
     return {
       errorMessage: '',
@@ -54,35 +57,17 @@ export default {
       let userFound = false;
 
       if (this.user === 'user' && this.pass === 'user') {
-        this.$store.commit('SET_USER', new User({
-          nombre: 'Roberto Juarroz',
-          username: this.user,
-          mail: 'roberto.juarroz@gmail.com',
-          tipo: 0,
-          imgUrl: 'https://randomuser.me/api/portraits/men/84.jpg'
-        }));
+        this.$store.commit('SET_USER', USERS[0]);
         userFound = true;
       }
 
       if (this.user === 'empresa' && this.pass === 'empresa') {
-        this.$store.commit('SET_USER', new User({
-          nombre: 'Plásticos SRL',
-          username: this.user,
-          mail: 'plasticossrl@gmail.com',
-          tipo: 1,
-          imgUrl: 'https://randomuser.me/api/portraits/lego/1.jpg'
-        }));
+        this.$store.commit('SET_USER', USERS[1]);
         userFound = true;
       }
 
       if (this.user === 'admin' && this.pass === 'admin') {
-        this.$store.commit('SET_USER', new User({
-          nombre: 'Emma Zunz',
-          username: this.user,
-          mail: 'emmazunz@gmail.com',
-          tipo: 2,
-          imgUrl: 'https://randomuser.me/api/portraits/women/63.jpg'
-        }));
+        this.$store.commit('SET_USER', USERS[2]);
         userFound = true;
       }
 

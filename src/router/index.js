@@ -6,7 +6,7 @@ import Registro from '../views/Registro.vue'
 import RecuperarPassword from '../views/RecuperarPassword.vue'
 import ComprarPack from '../views/ComprarPack.vue'
 import PublicarPublicidad from '../views/PublicarPublicidad.vue'
-import About from '../views/About.vue'
+import Informacion from '../views/Informacion.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +27,7 @@ const routes = [
     component: Registro
   },
   {
-    path: '/recuperar-contraseña',
+    path: '/recuperar-contrasena',
     name: 'Recuperar contraseña',
     component: RecuperarPassword
   },
@@ -42,9 +42,9 @@ const routes = [
     component: PublicarPublicidad
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    path: '/informacion',
+    name: 'o',
+    component: Informacion
   }
 ]
 
