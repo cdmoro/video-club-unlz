@@ -3,6 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
+import RecuperarPassword from '../views/RecuperarPassword.vue'
+import ComprarPack from '../views/ComprarPack.vue'
+import PublicarPublicidad from '../views/PublicarPublicidad.vue'
+import About from '../views/About.vue'
 
 Vue.use(VueRouter)
 
@@ -23,12 +27,24 @@ const routes = [
     component: Registro
   },
   {
+    path: '/recuperar-contraseña',
+    name: 'Recuperar contraseña',
+    component: RecuperarPassword
+  },
+  {
+    path: '/comprar-pack',
+    name: 'Comprar pack',
+    component: ComprarPack
+  },
+  {
+    path: '/publicar-publicidad',
+    name: 'Publicar publicida',
+    component: PublicarPublicidad
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
   }
 ]
 
