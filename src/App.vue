@@ -1,45 +1,21 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-    v-model="drawer"
-      app
-      clipped
-    >
+    <v-navigation-drawer v-model="drawer" app clipped color="primary" dark>
       <v-list>
-        <v-list-item to="/">
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>Inicio</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item to="/login">
+        <v-list-item :to="item.to" v-for="item of menu" :key="item.title">
           <v-list-item-icon>
-            <v-icon>mdi-lock</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Login</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item to="/about">
-          <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>Nosotros</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      app
-      color="indigo"
-      dark
-      clipped-left
-    >
+
+    <v-app-bar app color="primary" dark clipped-left>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Pelis plus</v-toolbar-title>
+      <img class="ml-3" src="../public/logo.png" height="50" />
     </v-app-bar>
 
     <v-main>
@@ -54,10 +30,27 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
 
   data: () => ({
-    drawer: null
+    drawer: null,
+    menu: [
+      {
+        title: "Inicio",
+        to: "/",
+        icon: "mdi-home",
+      },
+      {
+        title: "Login",
+        to: "/login",
+        icon: "mdi-lock",
+      },
+      {
+        title: "Nosotros",
+        to: "/about",
+        icon: "mdi-account",
+      },
+    ],
   }),
 };
 </script>

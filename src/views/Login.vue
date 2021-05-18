@@ -18,7 +18,8 @@
         hide-details="auto"
         :error="showError"
       ></v-text-field>
-      <v-btn class="mt-4" color="indigo" dark @click="login">Ingresar</v-btn>
+        <v-btn class="mt-4 mb-2" color="primary" dark @click="login">Ingresar</v-btn>
+        <div>¿No tenés cuenta? <router-link to="/registro">Registrate</router-link></div>
     </v-container>
   </div>
 </template>
