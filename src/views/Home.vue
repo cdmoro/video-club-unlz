@@ -10,7 +10,22 @@
           ></v-img>
 
         <v-card-title>{{ trend.title }}</v-card-title>
-        <v-card-text>{{ trend.overview.slice(0, 50).trim() }}...</v-card-text>
+        <v-card-subtitle>
+          <v-row align="center" class="mx-0">
+            <v-rating
+            :value="(5 * trend.vote_average) / 10"
+            color="amber"
+            dense
+            half-increments
+            readonly
+            size="14"
+          ></v-rating>
+            <span class="text-sm ml-2">({{ trend.vote_average }}/10)</span>
+          </v-row>
+        </v-card-subtitle>
+        <v-card-text class="mt-4">
+          {{ trend.overview.slice(0, 50).trim() }}...
+        </v-card-text>
         </v-card>
       </v-col>
     </v-row>
