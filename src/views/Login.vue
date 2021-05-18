@@ -3,7 +3,7 @@
     <v-container>
       <h2>Login</h2>
       <v-alert v-if="showError" icon="mdi-account" type="error" class="mt-4"
-        >Error. Usuario y/o contraseña son incorrectos.</v-alert
+        >Error. Mail y/o contraseña son incorrectos.</v-alert
       >
       <v-text-field
         label="Mail"
