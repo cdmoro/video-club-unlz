@@ -3,30 +3,35 @@
     <v-container>
       <h2>Ingreso</h2>
       <v-alert
-        v-if="errorMessage.lenth > 0"
+        v-if="errorMessage.length > 0"
         icon="mdi-account"
         type="error"
         class="mt-4"
         >{{ errorMessage }}</v-alert
       >
 
-      <v-text-field
-        label="Usuario"
-        autocomplete="off"
-        hide-details="auto"
-        :error="errorMessage.length > 0"
-        v-model="user"
-      ></v-text-field>
+      <v-card class="my-4">
+        <!-- <v-card-title>Ingreso</v-card-title> -->
+        <v-card-text>
+        <v-text-field
+          label="Usuario"
+          autocomplete="off"
+          hide-details="auto"
+          :error="errorMessage.length > 0"
+          v-model="user"
+        ></v-text-field>
 
-      <v-text-field
-        label="Contraseña"
-        type="password"
-        hide-details="auto"
-        :error="errorMessage.length > 0"
-        v-model="pass"
-      ></v-text-field>
+        <v-text-field
+          label="Contraseña"
+          type="password"
+          hide-details="auto"
+          :error="errorMessage.length > 0"
+          v-model="pass"
+        ></v-text-field>
+        </v-card-text>
+      </v-card>
 
-      <v-btn class="mt-4 mb-2" color="primary" dark @click="login"
+      <v-btn class="mb-2" color="primary" dark @click="login"
         >Ingresar</v-btn
       >
       <div>
@@ -36,7 +41,7 @@
           <template v-slot:activator="{ on, attrs }">
             <a
               href="#"
-              color="primary"
+              class="white--text"
               v-bind="attrs"
               v-on="on"
               @click="recuperarMail = ''"
@@ -82,7 +87,7 @@
       </div>
 
       <div>
-        ¿No tenés cuenta? <router-link to="/registro">Registrate</router-link>
+        ¿No tenés cuenta? <router-link to="/registro" class="white--text">Registrate</router-link>
       </div>
 
       <v-snackbar v-model="snackbar" :timeout="4000" right bottom>
@@ -96,9 +101,6 @@
 import USERS from "../users";
 
 export default {
-  mounted() {
-    console.log(USERS);
-  },
   data() {
     return {
       errorMessage: "",

@@ -6,6 +6,7 @@ import Registro from '../views/Registro.vue'
 import ComprarPack from '../views/ComprarPack.vue'
 import PublicarPublicidad from '../views/PublicarPublicidad.vue'
 import Informacion from '../views/Informacion.vue'
+import Search from '../views/Search.vue'
 
 Vue.use(VueRouter)
 
@@ -39,7 +40,12 @@ const routes = [
     path: '/informacion',
     name: 'Información',
     component: Informacion
-  }
+  },
+  {
+    path: '/search',
+    name: 'Buscar',
+    component: Search
+  },
 ]
 
 const router = new VueRouter({
