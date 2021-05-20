@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
-import RecuperarPassword from '../views/RecuperarPassword.vue'
 import ComprarPack from '../views/ComprarPack.vue'
 import PublicarPublicidad from '../views/PublicarPublicidad.vue'
 import Informacion from '../views/Informacion.vue'
@@ -27,11 +26,6 @@ const routes = [
     component: Registro
   },
   {
-    path: '/recuperar-contrasena',
-    name: 'Recuperar contraseña',
-    component: RecuperarPassword
-  },
-  {
     path: '/comprar-pack',
     name: 'Comprar pack',
     component: ComprarPack
@@ -43,7 +37,7 @@ const routes = [
   },
   {
     path: '/informacion',
-    name: 'o',
+    name: 'Información',
     component: Informacion
   }
 ]

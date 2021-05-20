@@ -2,10 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import User from '../models/User';
 import router from '../router';
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     user: new User(),
   },
@@ -30,6 +32,9 @@ export default new Vuex.Store({
       LOGOUT(state) {
           state.user = new User();
           router.replace('/');
+      },
+      UPGRADE_USER_ACCOUNT(state) {
+        state.user.tipo = 1;
       }
   },
   actions: {},

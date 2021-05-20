@@ -115,7 +115,7 @@ export default {
           })
         }
 
-        if (this.$store.getters.isEmpresa) {
+        if (this.$store.getters.isUser || this.$store.getters.isEmpresa) {
           menu.push({
             title: "Publicar publicidad",
             to: "/publicar-publicidad",
