@@ -3,12 +3,13 @@
     <v-container>
       <v-row justify="center">
         <v-col sm="8" md="4">
-          <v-card class="my-4">
+          <v-card class="mt-4 mb-2">
             <v-card-title>Ingreso</v-card-title>
             <v-card-text>
               <v-alert v-if="errorMessage.length > 0" type="error">{{
                 errorMessage
               }}</v-alert>
+              
               <v-text-field
                 label="Usuario"
                 autocomplete="off"
@@ -27,12 +28,12 @@
                 v-model="pass"
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
+
+              <v-btn class="mt-4" color="primary" dark @click="login"
+                >Ingresar</v-btn
+              >
             </v-card-text>
           </v-card>
-
-          <v-btn class="mb-2" color="primary" dark @click="login"
-            >Ingresar</v-btn
-          >
           <div>
             ¿Olvidaste tu contraseña?
 
