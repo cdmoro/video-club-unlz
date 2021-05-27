@@ -4,6 +4,7 @@
       <v-col sm="8" md="6">
         <v-card class="mt-4 mb-2">
           <v-card-title>Registro</v-card-title>
+          <v-card-subtitle>Si ya estás registrado hace click <router-link to="/login">acá</router-link> para iniciar sesión</v-card-subtitle>
           <form name="registro-form" @submit.prevent>
             <v-card-text>
               <v-text-field
@@ -71,20 +72,20 @@
               ></v-text-field>
             </v-card-text>
 
-            <v-card-text v-if="!isEmpresa">
+            <v-card-text>
               <p>O podés registrarte con las siguientes redes sociales</p>
               <v-row>
                 <v-col md="3">
-                  <v-btn class="mr-2" color="red" dark>Google</v-btn>
+                  <v-btn :disabled="isEmpresa" class="mr-2 white--text" color="red">Google</v-btn>
                 </v-col>
                 <v-col md="3">
-                  <v-btn class="mr-2" color="blue" dark>Facebook</v-btn>
+                  <v-btn :disabled="isEmpresa" class="mr-2 white--text" color="blue">Facebook</v-btn>
                 </v-col>
                 <v-col md="3">
-                  <v-btn class="mr-2" color="light-blue" dark>Twitter</v-btn>
+                  <v-btn :disabled="isEmpresa" class="mr-2 white--text" color="light-blue">Twitter</v-btn>
                 </v-col>
                 <v-col md="3">
-                  <v-btn color="blue" dark>LinkedIn</v-btn>
+                  <v-btn :disabled="isEmpresa" color="blue" class="white--text">LinkedIn</v-btn>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -183,17 +184,18 @@
             </v-card-text>
 
             <v-card-text>
+              <!-- <a href="#">Ver términos y condiciones</a> -->
               <v-checkbox
                 v-model="aceptoTerminos"
                 label="Acepto términos y condiciones"
-              />
+              >
+                <template #label>
+                  <div>He leído y aceptado los <a href="#" @click.stop>términos y condiciones</a></div>
+                </template>
+              </v-checkbox>
             </v-card-text>
 
             <v-card-actions>
-              <!-- <v-btn type="submit" class="mt-4" color="primary" dark
-                >Registrate</v-btn
-              > -->
-
               <v-btn type="submit" color="primary" dark @click="handleSubmit">
                 Registrate
               </v-btn>
