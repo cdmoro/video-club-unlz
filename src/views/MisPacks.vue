@@ -14,16 +14,6 @@
       <v-tabs icons-and-text v-model="tab" centered>
         <v-tabs-slider />
 
-        <!-- <v-tab href="#peliculas-tab">
-          Películas
-          <v-icon>mdi-movie</v-icon>
-        </v-tab>
-
-        <v-tab href="#series-tab">
-          Series
-          <v-icon>mdi-filmstrip-box-multiple</v-icon>
-        </v-tab> -->
-
         <v-tab href="#eventos-tab">
           Eventos deportivos
           <v-icon>mdi-basketball</v-icon>
@@ -77,54 +67,16 @@
             </div>
           </v-card>
         </v-tab-item>
-        
-        <!-- <v-tab-item value="series-tab">
-          <v-card flat>
-            <v-card-title>Series</v-card-title>
-            <div class="my-5 text-center">
-              <v-icon size="110">mdi-filmstrip-box-multiple</v-icon>
-              <p class="mt-2 pb-5">No tenés ninguna serie</p>
-            </div>
-          </v-card>
-        </v-tab-item>
-
-        <v-tab-item value="eventos-tab">
-          <v-card flat>
-            <v-card-title>Eventos</v-card-title>
-            <div class="my-5 text-center">
-              <v-icon size="110">mdi-basketball</v-icon>
-              <p class="mt-2 pb-5">No tenés ningún evento</p>
-            </div>
-          </v-card>
-        </v-tab-item> -->
       </v-tabs-items>
     </v-card>
 
-    <v-speed-dial v-model="fab" right bottom fixed open-on-hover>
+    <v-speed-dial v-model="fab" right bottom fixed>
       <template v-slot:activator>
         <v-btn v-model="fab" fab>
           <v-icon v-if="fab"> mdi-close </v-icon>
           <v-icon v-else> mdi-plus </v-icon>
         </v-btn>
       </template>
-
-      <!-- <v-tooltip left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="green" fab small dark v-bind="attrs" v-on="on">
-            <v-icon>mdi-movie</v-icon>
-          </v-btn>
-        </template>
-        <span>Película</span>
-      </v-tooltip>
-
-      <v-tooltip left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="red" fab small dark v-bind="attrs" v-on="on">
-            <v-icon>mdi-filmstrip-box-multiple</v-icon>
-          </v-btn>
-        </template>
-        <span>Serie</span>
-      </v-tooltip> -->
 
       <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
