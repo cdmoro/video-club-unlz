@@ -59,7 +59,7 @@
               <v-img :src="users[2].imgUrl"></v-img>
             </v-avatar>
           </v-card-text>
-          <v-card-title>Administrador del sistema</v-card-title>
+          <v-card-title>Dueño del sistema</v-card-title>
           <v-card-subtitle>Datos de login</v-card-subtitle>
           <v-card-text>
             <p class="mb-0 text--primary">usuario: admin</p>

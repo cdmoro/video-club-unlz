@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import User from '../models/User';
+import Usuario from '../models/Usuario';
 import router from '../router';
 import createPersistedState from "vuex-persistedstate";
 
@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    user: new User(),
+    user: new Usuario(),
   },
   getters: {
     isUserLogged(state) {
@@ -30,7 +30,7 @@ export default new Vuex.Store({
           state.user = user;
       },
       LOGOUT(state) {
-          state.user = new User();
+          state.user = new Usuario();
           router.replace('/');
       },
       UPGRADE_USER_ACCOUNT(state) {
