@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Publicar publicidad</h2>
+      <h2>Mis publicidades</h2>
       <div v-if="!$store.getters.isEmpresa" class="mt-4">
         <v-alert type="error">Tu perfil de usuario actual no permite realizar esta acción</v-alert>
         <p>Si querés empezar a publicar publicidades tenés que cambiar tu cuenta a una cuenta de tipo <strong>Empresa</strong>.</p>
@@ -66,6 +66,7 @@
 
 <script>
 export default {
+  name: 'MisPublicidades',
   data() {
     return {
       upgradeAccountError: false,

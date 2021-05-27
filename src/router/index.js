@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
-import ComprarPack from '../views/ComprarPack.vue'
-import PublicarPublicidad from '../views/PublicarPublicidad.vue'
+import MisPacks from '../views/MisPacks.vue'
+import MisPublicidades from '../views/MisPublicidades.vue'
 import Informacion from '../views/Informacion.vue'
 import Search from '../views/Search.vue'
 
@@ -27,14 +27,14 @@ const routes = [
     component: Registro
   },
   {
-    path: '/comprar-pack',
-    name: 'Comprar pack',
-    component: ComprarPack
+    path: '/mis-packs',
+    name: 'Mis packs',
+    component: MisPacks
   },
   {
-    path: '/publicar-publicidad',
-    name: 'Publicar publicida',
-    component: PublicarPublicidad
+    path: '/mis-publicidades',
+    name: 'Mis publicidades',
+    component: MisPublicidades
   },
   {
     path: '/informacion',

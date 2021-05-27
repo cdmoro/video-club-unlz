@@ -132,16 +132,16 @@ export default {
       if (this.$store.getters.isUserLogged) {
         if (this.$store.getters.isUser || this.$store.getters.isEmpresa) {
           menu.push({
-            title: "Comprar pack",
-            to: "/comprar-pack",
+            title: "Mis packs",
+            to: "/mis-packs",
             icon: "mdi-cart-plus",
           });
         }
 
         if (this.$store.getters.isUser || this.$store.getters.isEmpresa) {
           menu.push({
-            title: "Publicar publicidad",
-            to: "/publicar-publicidad",
+            title: "Mis publicidades",
+            to: "/mis-publicidades",
             icon: "mdi-bullhorn",
           });
         }
