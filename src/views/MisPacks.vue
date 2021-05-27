@@ -11,7 +11,7 @@
     </p>
 
     <v-card>
-      <v-tabs icons-and-text v-model="tab">
+      <v-tabs icons-and-text v-model="tab" centered>
         <v-tabs-slider />
 
         <v-tab href="#peliculas-tab">
