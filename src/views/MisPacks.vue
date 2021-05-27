@@ -42,7 +42,7 @@
               hide-default-footer
             >
               <template #item.imgUrl="{ item }">
-                <v-img class="my-2 elevation-2 rounded" width="100" contain :src="item.imgUrl"/>
+                <v-img class="mt-4 my-md-4 elevation-2 rounded" width="100" contain :src="item.imgUrl"/>
               </template>
               
               <template #item.visto="{ item }">
