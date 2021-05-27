@@ -14,7 +14,7 @@
       <v-tabs icons-and-text v-model="tab" centered>
         <v-tabs-slider />
 
-        <v-tab href="#peliculas-tab">
+        <!-- <v-tab href="#peliculas-tab">
           Películas
           <v-icon>mdi-movie</v-icon>
         </v-tab>
@@ -22,33 +22,41 @@
         <v-tab href="#series-tab">
           Series
           <v-icon>mdi-filmstrip-box-multiple</v-icon>
-        </v-tab>
+        </v-tab> -->
 
         <v-tab href="#eventos-tab">
-          Eventos
+          Eventos deportivos
           <v-icon>mdi-basketball</v-icon>
+        </v-tab>
+        
+        <v-tab href="#adultos-tab">
+          Contenido adulto
+          <v-icon>mdi-bed-king</v-icon>
         </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="tab">
-        <v-tab-item value="peliculas-tab">
+        <v-tab-item value="eventos-tab">
           <v-card flat>
-            <v-card-title>Películas</v-card-title>
+            <v-card-title>Eventos</v-card-title>
 
             <v-data-table
               :headers="headers"
-              :items="peliculasItems"
+              :items="eventosItems"
               class="elevation-1"
               hide-default-footer
             >
+              <!-- eslint-disable-next-line -->
               <template #item.imgUrl="{ item }">
                 <v-img class="mt-4 my-md-4 elevation-2 rounded" width="100" contain :src="item.imgUrl"/>
               </template>
               
+              <!-- eslint-disable-next-line -->
               <template #item.visto="{ item }">
                 {{ item.visto ? 'Sí' : 'No' }}
               </template>
 
+              <!-- eslint-disable-next-line -->
               <template #item.verAhora="{ item }">
                 <v-btn :disabled="item.visto" color="primary" @click="item.reproduccionesDisponibles = 0; item.visto = true">
                   <v-icon left>mdi-play</v-icon>
@@ -60,7 +68,17 @@
           </v-card>
         </v-tab-item>
 
-        <v-tab-item value="series-tab">
+        <v-tab-item value="adultos-tab">
+          <v-card flat>
+            <v-card-title>Contenido adulto</v-card-title>
+            <div class="my-5 text-center">
+              <v-icon size="110">mdi-bed-king</v-icon>
+              <p class="mt-2 pb-5">No tenés ningún pack de contenido adulto</p>
+            </div>
+          </v-card>
+        </v-tab-item>
+        
+        <!-- <v-tab-item value="series-tab">
           <v-card flat>
             <v-card-title>Series</v-card-title>
             <div class="my-5 text-center">
@@ -78,7 +96,7 @@
               <p class="mt-2 pb-5">No tenés ningún evento</p>
             </div>
           </v-card>
-        </v-tab-item>
+        </v-tab-item> -->
       </v-tabs-items>
     </v-card>
 
@@ -90,7 +108,7 @@
         </v-btn>
       </template>
 
-      <v-tooltip left>
+      <!-- <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="green" fab small dark v-bind="attrs" v-on="on">
             <v-icon>mdi-movie</v-icon>
@@ -106,15 +124,24 @@
           </v-btn>
         </template>
         <span>Serie</span>
-      </v-tooltip>
+      </v-tooltip> -->
 
       <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="blue" fab small dark v-bind="attrs" v-on="on">
+          <v-btn color="blue" fab small dark v-bind="attrs" v-on="on" to="/comprar-pack?tipo=evento">
             <v-icon>mdi-basketball</v-icon>
           </v-btn>
         </template>
-        <span>Evento</span>
+        <span>Evento deportivo</span>
+      </v-tooltip>
+      
+      <v-tooltip left>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="red" fab small dark v-bind="attrs" v-on="on"  to="/comprar-pack?tipo=adulto">
+            <v-icon>mdi-bed-king</v-icon>
+          </v-btn>
+        </template>
+        <span>Contenido adulto</span>
       </v-tooltip>
     </v-speed-dial>
   </div>
@@ -131,11 +158,11 @@ export default {
           { text: '', value: 'imgUrl' },
           { text: 'Título', value: 'name' },
           { text: 'Fecha de compra', value: 'fechaCompra' },
-          { text: '¿Ya la viste?', value: 'visto' },
+          { text: '¿Ya lo viste?', value: 'visto' },
           { text: 'Reproducciones disponibles', value: 'reproduccionesDisponibles' },
           { text: '', value: 'verAhora' }
         ],
-        peliculasItems: [
+        eventosItems: [
           {
             name: 'Cruella',
             fechaCompra: '05/05/2021',

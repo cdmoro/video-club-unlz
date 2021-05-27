@@ -3,30 +3,7 @@
     <h2 class="text-center mb-4">PELISPLUS - VER PELICULAS Y SERIES ONLINE EN HD</h2>
     <v-row>
       <v-col v-for="(trend, i) of trending" :key="i" sm="6" md="3">
-        <v-card>
-          <v-img
-            height="200"
-            :src="`https://image.tmdb.org/t/p/w300${trend.poster_path}`"
-          ></v-img>
-
-        <v-card-title>{{ trend.title }}</v-card-title>
-        <v-card-subtitle>
-          <v-row align="center" class="mx-0">
-            <v-rating
-            :value="(5 * trend.vote_average) / 10"
-            color="amber"
-            dense
-            half-increments
-            readonly
-            size="14"
-          ></v-rating>
-            <span class="text-sm ml-2">({{ trend.vote_average }}/10)</span>
-          </v-row>
-        </v-card-subtitle>
-        <v-card-text class="mt-4">
-          {{ trend.overview.slice(0, 50).trim() }}...
-        </v-card-text>
-        </v-card>
+        <media-card :media="trend" />
       </v-col>
     </v-row>
   </div>
@@ -34,8 +11,13 @@
 
 <script>
 import CommonController from '../controllers/CommonController'
+import MediaCard from '../components/MediaCard.vue';
+
 export default {
   name: 'Home',
+  components: {
+    MediaCard
+  },
   data() {
     return {
       trending: []

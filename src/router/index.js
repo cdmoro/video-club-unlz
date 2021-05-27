@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
 import MisPacks from '../views/MisPacks.vue'
+import ComprarPack from '../views/ComprarPack.vue'
 import MisPublicidades from '../views/MisPublicidades.vue'
 import Informacion from '../views/Informacion.vue'
 import Search from '../views/Search.vue'
@@ -30,6 +31,11 @@ const routes = [
     path: '/mis-packs',
     name: 'Mis packs',
     component: MisPacks
+  },
+  {
+    path: '/comprar-pack',
+    name: 'ComprarPack',
+    component: ComprarPack
   },
   {
     path: '/mis-publicidades',
