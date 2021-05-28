@@ -9,7 +9,7 @@
               <v-alert v-if="errorMessage.length > 0" type="error">{{
                 errorMessage
               }}</v-alert>
-              
+
               <v-text-field
                 label="Usuario"
                 autocomplete="off"
@@ -50,7 +50,7 @@
               </template>
               <template v-slot:default="dialog">
                 <v-card>
-                  <v-card-title> Recuperar contraseña </v-card-title>
+                  <v-card-title>Recuperar contraseña</v-card-title>
 
                   <v-card-text class="mb-2">
                     <v-text-field

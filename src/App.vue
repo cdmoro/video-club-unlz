@@ -42,11 +42,46 @@
 
       <v-spacer></v-spacer>
 
+      <v-menu offset-y max-width="400">
+        <template #activator="{ on, attrs }">
+          <v-btn icon title="Notificaciones" v-bind="attrs" v-on="on">
+            <v-icon>mdi-bell</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item three-line @click="() => {}">
+              <v-list-item-icon>
+                <v-icon>mdi-alert-decagram</v-icon>
+              </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>
+                Nuevo estreno
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                Se acaba de agregar la película <strong>Cruella</strong>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item three-line @click="() => {}">
+              <v-list-item-icon>
+                <v-icon>mdi-basketball</v-icon>
+              </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>
+                ¡El pártido está por comenzar!
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                En 15 minutos empieza el pártido entre <strong>New Jersey Nets y Denver Nuggets</strong>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-menu offset-y v-if="$store.getters.isUserLogged">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn text v-bind="attrs" v-on="on">
-            <v-icon left>mdi-account</v-icon>
-            {{ $store.state.user.username }}
+          <v-btn icon v-bind="attrs" v-on="on">
+            <v-icon>mdi-account</v-icon>
           </v-btn>
         </template>
         <v-list>
@@ -66,6 +101,14 @@
               <v-list-item-subtitle>{{
                 tipo[$store.state.user.tipo]
               }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="$router.push('/configuracion')">
+            <v-list-item-icon>
+              <v-icon>mdi-cog</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Configuración</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item @click="logout">
