@@ -28,7 +28,7 @@
       <v-tabs-items v-model="tab">
         <v-tab-item value="eventos-tab">
           <v-card flat>
-            <v-card-title>Eventos</v-card-title>
+            <v-card-title>Eventos deportivos</v-card-title>
 
             <v-data-table
               :headers="headers"
