@@ -18,10 +18,10 @@ import CommonController from "../controllers/CommonController";
 export default {
   components: { MediaCard },
   async mounted() {
-    this.findMovies();
+    this.findMovies(this.$route.query.s);
   },
   async beforeRouteUpdate(to, from, next) {
-    await this.findMovies();
+    await this.findMovies(to.query.s);
     next();
   },
   data() {
@@ -31,9 +31,9 @@ export default {
     };
   },
   methods: {
-    async findMovies() {
+    async findMovies(query) {
       this.loading = true;
-      const { data } = await CommonController.findMovies(this.$route.query.s);
+      const { data } = await CommonController.findMovies(query);
       this.movies = data.results;
       this.loading = false;
     },

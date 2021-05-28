@@ -37,18 +37,33 @@
               hide-default-footer
             >
               <!-- eslint-disable-next-line -->
-              <template #item.imgUrl="{ item }">
-                <v-img class="mt-4 my-md-4 elevation-2 rounded" width="100" contain :src="item.imgUrl"/>
+              <template #item.poster_path="{ item }">
+                <v-img class="mt-4 my-md-4 elevation-2 rounded" width="100" contain :src="`https://image.tmdb.org/t/p/w300${item.poster_path}`"/>
+              </template>
+              
+              <!-- eslint-disable-next-line -->
+              <template #item.name="{ item }">
+                {{ item.name || item.title }}
+              </template>
+              
+              <!-- eslint-disable-next-line -->
+              <template #item.fechaCompra="{ item }">
+                {{ item.id % 2 === 0 ? '05/05/2021' : '20/05/2021' }}
               </template>
               
               <!-- eslint-disable-next-line -->
               <template #item.visto="{ item }">
-                {{ item.visto ? 'Sí' : 'No' }}
+                {{ item.id % 2 === 0 ? 'Sí' : 'No' }}
+              </template>
+              
+              <!-- eslint-disable-next-line -->
+              <template #item.reproduccionesDisponibles="{ item }">
+                {{ item.id % 2 === 0 ? 0 : 1}}/1
               </template>
 
               <!-- eslint-disable-next-line -->
               <template #item.verAhora="{ item }">
-                <v-btn :disabled="item.visto" color="primary" @click="item.reproduccionesDisponibles = 0; item.visto = true">
+                <v-btn :disabled="item.id % 2 === 0" color="primary">
                   <v-icon left>mdi-play</v-icon>
                   Reproducir
                 </v-btn>
@@ -100,14 +115,20 @@
 </template>
 
 <script>
+import CommonController from '../controllers/CommonController';
+
 export default {
   name: "MisPacks",
+  async mounted() {
+    const { data } = await CommonController.getEventosDeportivos();
+    this.eventosItems = data.results.slice(0,2);
+  },
   data() {
     return {
       fab: false,
       tab: 1,
       headers: [
-          { text: '', value: 'imgUrl' },
+          { text: '', value: 'poster_path' },
           { text: 'Título', value: 'name' },
           { text: 'Fecha de compra', value: 'fechaCompra' },
           { text: '¿Ya lo viste?', value: 'visto' },
@@ -115,20 +136,20 @@ export default {
           { text: '', value: 'verAhora' }
         ],
         eventosItems: [
-          {
-            name: 'Cruella',
-            fechaCompra: '05/05/2021',
-            visto: false,
-            imgUrl: 'https://image.tmdb.org/t/p/w300/hjS9mH8KvRiGHgjk6VUZH7OT0Ng.jpg',
-            reproduccionesDisponibles: 1,
-          },
-          {
-            name: 'Friends: The Reunion',
-            fechaCompra: '22/05/2021',
-            visto: true,
-            imgUrl: 'https://image.tmdb.org/t/p/w300/l00ff9dmop1UBfb4QNrLMQl5fgc.jpg',
-            reproduccionesDisponibles: 0,
-          },
+          // {
+          //   name: 'Cruella',
+          //   fechaCompra: '05/05/2021',
+          //   visto: false,
+          //   imgUrl: 'https://image.tmdb.org/t/p/w300/hjS9mH8KvRiGHgjk6VUZH7OT0Ng.jpg',
+          //   reproduccionesDisponibles: 1,
+          // },
+          // {
+          //   name: 'Friends: The Reunion',
+          //   fechaCompra: '22/05/2021',
+          //   visto: true,
+          //   imgUrl: 'https://image.tmdb.org/t/p/w300/l00ff9dmop1UBfb4QNrLMQl5fgc.jpg',
+          //   reproduccionesDisponibles: 0,
+          // },
         ],
     };
   },

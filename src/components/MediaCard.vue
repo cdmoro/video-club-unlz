@@ -5,7 +5,7 @@
       :src="`https://image.tmdb.org/t/p/w300${media.poster_path}`"
     ></v-img>
 
-    <v-card-title>{{ media.title }}</v-card-title>
+    <v-card-title>{{ media.title || media.name }}</v-card-title>
     <v-card-subtitle>
       <v-row align="center" class="mx-0">
         <v-rating
@@ -38,7 +38,7 @@ export default {
 .media-card {
   opacity: 0.7;
   transform: scale(.95);
-  transition: all .15s ease;
+  transition: all .15s ease !important;
 }
 
 .media-card:hover {
