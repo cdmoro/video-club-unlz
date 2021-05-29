@@ -18,7 +18,7 @@
           <v-btn color="primary" @click="adultoStepper = 2">Siguiente</v-btn>
         </v-stepper-content>
 
-        <v-stepper-step editable step="2">
+        <v-stepper-step :editable="adultoStepper > 1" step="2">
           {{ adultPanelTitle }}
           <small
             >Seleccioná una pélicula de nuestro ámplio catálogo de
@@ -34,7 +34,7 @@
           </v-row>
         </v-stepper-content>
 
-        <v-stepper-step editable step="3">
+        <v-stepper-step :editable="adultoStepper > 1" step="3">
           Tiempo de contratación
         </v-stepper-step>
 
@@ -49,10 +49,14 @@
               :max="50"
             ></v-slider>
           </v-card-text>
-          <v-btn color="primary" @click="adultoStepper = 4">Siguiente</v-btn>
+          <v-btn color="primary" @click="adultoStepper = 4">Comprar {{ tiempoAdulto }} hora/s</v-btn>
+          <v-divider class="my-4" />
+          <h3>Suscripción anual</h3>
+          <p>O podés optar por una suscripción anual, incluye el contenido en el idioma que prefieras y acceso a los eventos deportivos</p>
+          <v-btn color="primary" @click="suscripcionAnual = true">Comprar</v-btn>
         </v-stepper-content>
 
-        <v-stepper-step editable step="4"> Resumen </v-stepper-step>
+        <v-stepper-step :editable="adultoStepper > 1" step="4"> Resumen </v-stepper-step>
 
         <v-stepper-content step="4">
           <p>Contenido seleccionado</p>
@@ -78,7 +82,7 @@
           <v-btn color="primary" @click="adultoStepper = 5">Pagar</v-btn>
         </v-stepper-content>
 
-        <v-stepper-step editable step="5"> Contenido adicional </v-stepper-step>
+        <v-stepper-step :editable="adultoStepper > 1" step="5"> Contenido adicional </v-stepper-step>
 
         <v-stepper-content step="5">
           <h2 class="mb-3">
@@ -146,6 +150,7 @@ export default {
   },
   data() {
     return {
+      suscripcionAnual: false,
       error: false,
       loading: false,
       formasDePago: [
@@ -180,7 +185,7 @@ export default {
     },
     adultPanelTitle() {
       return this.adultoStepper > 2
-        ? `Contenido seleccionado: ${this.selectedMedia.title}`
+        ? `Contenido seleccionado: ${this.selectedMedia.title || this.selectedMedia.name }`
         : "Catálogo adulto";
     },
   },
