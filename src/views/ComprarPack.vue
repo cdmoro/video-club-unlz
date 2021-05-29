@@ -50,10 +50,6 @@
             ></v-slider>
           </v-card-text>
           <v-btn color="primary" @click="adultoStepper = 4">Comprar {{ tiempoAdulto }} hora/s</v-btn>
-          <v-divider class="my-4" />
-          <h3>Suscripción anual</h3>
-          <p>O podés optar por una suscripción anual, incluye el contenido en el idioma que prefieras y acceso a los eventos deportivos</p>
-          <v-btn color="primary" @click="suscripcionAnual = true">Comprar</v-btn>
         </v-stepper-content>
 
         <v-stepper-step :editable="adultoStepper > 1" step="4"> Resumen </v-stepper-step>
@@ -150,7 +146,6 @@ export default {
   },
   data() {
     return {
-      suscripcionAnual: false,
       error: false,
       loading: false,
       formasDePago: [

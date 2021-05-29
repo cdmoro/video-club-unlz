@@ -10,8 +10,23 @@
       que está en la esquina inferior derecha de tu pantalla.
     </p>
 
+    <v-card class="mb-4">
+      <v-card-title>Suscripción anual</v-card-title>
+
+      <v-card-text>
+        <template v-if="$store.state.suscripcionAnual">
+          <v-alert type="info">Tu suscripción termina el {{ endDateSuscription }}</v-alert>
+          <v-btn color="primary" @click="$store.commit('SET_SUSCRIPCION_ANUAL', false)">Cancelar suscripción</v-btn>
+        </template>
+        <template v-else>
+          <p>Al optar por una suscripción anual, ¡podés ver todos los eventos deportivos por un año en el idioma que prefieras (SAP)!</p>
+          <v-btn color="primary" @click="anualSuscription">Comprar suscripción anual</v-btn>
+        </template>
+      </v-card-text>
+    </v-card>
+
     <v-card>
-      <v-tabs icons-and-text v-model="tab" centered>
+      <v-tabs icons-and-text v-model="tab" centered dark>
         <v-tabs-slider />
 
         <v-tab href="#eventos-tab">
@@ -123,8 +138,23 @@ export default {
     const { data } = await CommonController.getEventosDeportivos();
     this.eventosItems = data.results.slice(0,2);
   },
+  methods: {
+    anualSuscription() {
+      this.$store.commit('SET_SUSCRIPCION_ANUAL', true);
+
+      let date = new Date();
+      date = date.setFullYear(date.getFullYear() + 1);
+
+      date = new Date(date);
+      let month = date.getMonth() + 1;
+      month = (month < 10 ? '0' : '') + month;
+
+      this.endDateSuscription = `${date.getDate() < 10 ? '0' : ''}${date.getDate()}/${month}/${date.getFullYear()}`;
+    },
+  },
   data() {
     return {
+      endDateSuscription: null,
       fab: false,
       tab: 1,
       headers: [
