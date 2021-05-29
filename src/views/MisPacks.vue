@@ -12,14 +12,15 @@
 
     <v-card class="mb-4">
       <v-card-title>Suscripción anual</v-card-title>
+      <v-card-subtitle v-if="!$store.state.suscripcionAnual">Al optar por una suscripción anual, ¡podés ver todos los eventos deportivos por un año en el idioma que prefieras (SAP)!</v-card-subtitle>
+      <v-card-subtitle v-else>Actualmente tenés una suscripción anual activa</v-card-subtitle>
 
       <v-card-text>
         <template v-if="$store.state.suscripcionAnual">
-          <v-alert type="info">Tu suscripción termina el {{ endDateSuscription }}</v-alert>
+          <v-alert type="info">Recordá que tu suscripción termina el {{ endDateSuscription }}</v-alert>
           <v-btn color="primary" @click="$store.commit('SET_SUSCRIPCION_ANUAL', false)">Cancelar suscripción</v-btn>
         </template>
         <template v-else>
-          <p>Al optar por una suscripción anual, ¡podés ver todos los eventos deportivos por un año en el idioma que prefieras (SAP)!</p>
           <v-btn color="primary" @click="anualSuscription">Comprar suscripción anual</v-btn>
         </template>
       </v-card-text>
