@@ -10,7 +10,7 @@
           <v-card-title>Datos requeridos</v-card-title>
           <v-card-text>
             <form name="upgrade-account-form">
-              <v-text-field required label="CUIT/CUIL"></v-text-field>
+              <empresa-form />
             </form>
           </v-card-text>
         </v-card>
@@ -58,14 +58,16 @@
       </div>
       <div v-else>
         <form name="publish-ad-form">
-          Formulario
+          <v-alert type="info" class="mt-4">Funcionalidad no está implementada aun</v-alert>
         </form>
       </div>
   </div>
 </template>
 
 <script>
+import EmpresaForm from '../components/EmpresaForm.vue';
 export default {
+  components: { EmpresaForm },
   name: 'MisPublicidades',
   data() {
     return {
