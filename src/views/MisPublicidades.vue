@@ -23,7 +23,6 @@
             <v-btn
               v-bind="attrs"
               v-on="on"
-              @click="upgradeAccountError = false"
               >Cambiar mi cuenta</v-btn
             >
           </template>
@@ -35,7 +34,6 @@
 
               <v-card-text>
                 ¿Estás seguro de cambiar el tipo de cuenta a una cuenta <strong>Empresa</strong>? Esta acción no puede deshacerse.
-                <v-alert v-if="upgradeAccountError" class="mt-3" type="error">Hay errores en el formulario. Por favor, corregilos para poder continuar.</v-alert>
               </v-card-text>
 
               <v-card-actions
@@ -47,7 +45,7 @@
 
                 <v-btn
                   color="primary"
-                  @click="upgradeAccount"
+                  @click="$store.commit('UPGRADE_USER_ACCOUNT')"
                   >Cambiar cuenta</v-btn
                 >
               </v-card-actions>
@@ -69,20 +67,6 @@ import EmpresaForm from '../components/EmpresaForm.vue';
 export default {
   components: { EmpresaForm },
   name: 'MisPublicidades',
-  data() {
-    return {
-      upgradeAccountError: false,
-    }
-  },
-  methods: {
-    upgradeAccount() {
-      if (document.forms['upgrade-account-form'].checkValidity()) {
-        this.$store.commit('UPGRADE_USER_ACCOUNT');
-      } else {
-        this.upgradeAccountError = true;
-      }
-    }
-  }
 }
 </script>
 

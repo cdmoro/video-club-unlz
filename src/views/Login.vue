@@ -127,17 +127,17 @@ export default {
       let userFound = false;
 
       if (this.user === "user" && this.pass === "user") {
-        this.$store.commit("SET_USER", USERS[0]);
+        this.$store.commit("SET_USER", Object.assign({}, USERS[0]));
         userFound = true;
       }
 
       if (this.user === "empresa" && this.pass === "empresa") {
-        this.$store.commit("SET_USER", USERS[1]);
+        this.$store.commit("SET_USER", Object.assign({}, USERS[1]));
         userFound = true;
       }
 
       if (this.user === "admin" && this.pass === "admin") {
-        this.$store.commit("SET_USER", USERS[2]);
+        this.$store.commit("SET_USER", Object.assign({}, USERS[2]));
         userFound = true;
       }
 

@@ -22,6 +22,7 @@
           <v-card-text>
             <p class="mb-0 text--primary">usuario: usuario</p>
             <p class="text--primary">contraseña: usuario</p>
+            <v-alert type="info">Si hiciste upgrade a una cuenta empresa, volvé a loguearte por acá para volver a ver el perfil usuario</v-alert>
           </v-card-text>
           <v-divider class="mx-4"></v-divider>
           <v-card-actions>
@@ -88,7 +89,7 @@ export default {
   },
   methods: {
     login(userId) {
-      this.$store.commit('SET_USER', USERS[userId]);
+      this.$store.commit('SET_USER', Object.assign({}, USERS[userId]));
       this.$router.replace('/');
     }
   }
