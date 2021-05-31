@@ -8,6 +8,7 @@ import ComprarPack from '../views/ComprarPack.vue'
 import MisPublicidades from '../views/MisPublicidades.vue'
 import Informacion from '../views/Informacion.vue'
 import Search from '../views/Search.vue'
+import Configuracion from '../views/Configuracion.vue'
 import PaginaNoEncontrada from '../views/PaginaNoEncontrada.vue'
 
 Vue.use(VueRouter)
@@ -52,6 +53,11 @@ const routes = [
     path: '/search',
     name: 'Buscar',
     component: Search
+  },
+  {
+    path: '/configuracion',
+    name: 'Configuración',
+    component: Configuracion
   },
   {
     path: '*',

@@ -78,7 +78,7 @@
         </v-list>
       </v-menu>
 
-      <v-menu offset-y v-if="$store.getters.isUserLogged">
+      <v-menu offset-y v-if="$store.getters.isUserLoggedIn">
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
             <v-icon>mdi-account</v-icon>
@@ -172,7 +172,7 @@ export default {
         },
       ];
 
-      if (this.$store.getters.isUserLogged) {
+      if (this.$store.getters.isUserLoggedIn) {
         if (this.$store.getters.isUser || this.$store.getters.isEmpresa) {
           menu.push({
             title: "Mis packs",

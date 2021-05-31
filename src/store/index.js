@@ -13,7 +13,7 @@ export default new Vuex.Store({
     suscripcionAnual: false,
   },
   getters: {
-    isUserLogged(state) {
+    isUserLoggedIn(state) {
       return state.user.username;
     },
     isUser(state) {

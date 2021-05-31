@@ -10,22 +10,6 @@
       que está en la esquina inferior derecha de tu pantalla.
     </p>
 
-    <v-card class="mb-4">
-      <v-card-title>Suscripción anual</v-card-title>
-      <v-card-subtitle v-if="!$store.state.suscripcionAnual">Al optar por una suscripción anual, ¡podés ver todos los eventos deportivos por un año en el idioma que prefieras (SAP)!</v-card-subtitle>
-      <v-card-subtitle v-else>Actualmente tenés una suscripción anual activa</v-card-subtitle>
-
-      <v-card-text>
-        <template v-if="$store.state.suscripcionAnual">
-          <v-alert type="info">Recordá que tu suscripción termina el {{ endDateSuscription }}</v-alert>
-          <v-btn color="primary" @click="$store.commit('SET_SUSCRIPCION_ANUAL', false)">Cancelar suscripción</v-btn>
-        </template>
-        <template v-else>
-          <v-btn color="primary" @click="anualSuscription">Comprar suscripción anual</v-btn>
-        </template>
-      </v-card-text>
-    </v-card>
-
     <v-card>
       <v-tabs icons-and-text v-model="tab" centered dark>
         <v-tabs-slider />
@@ -44,7 +28,29 @@
       <v-tabs-items v-model="tab">
         <v-tab-item value="eventos-tab">
           <v-card flat>
+            <v-card-text>
+              <v-card flat color="primary" dark>
+              <v-card-title>Suscripción anual</v-card-title>
+                <template v-if="!$store.state.suscripcionAnual">
+                  <v-card-subtitle>Al optar por una suscripción anual, ¡podés ver todos los eventos deportivos por un año en el idioma que prefieras (SAP)!</v-card-subtitle>
+                  <v-card-actions>
+                    <v-btn text @click="anualSuscription">Activar suscripción anual</v-btn>
+                  </v-card-actions>
+                </template>
+                <template v-else>
+                    <v-card-subtitle>Actualmente tenés una suscripción anual activa</v-card-subtitle>
+                    <v-card-text>
+                        <v-alert type="info" color="black">Recordá que tu suscripción termina el {{ endDateSuscription }}</v-alert>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn text @click="$store.commit('SET_SUSCRIPCION_ANUAL', false)">Cancelar suscripción</v-btn>
+                    </v-card-actions>
+                </template>
+              </v-card>
+            </v-card-text>
+
             <v-card-title>Eventos deportivos</v-card-title>
+            <v-card-subtitle>Estos son los eventos deportivos a los que estás suscripto actualmente</v-card-subtitle>
 
             <v-data-table
               :headers="headers"
