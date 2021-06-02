@@ -4,22 +4,22 @@ const API_KEY = '7c8c670882ff4356c6aa8fd79464f874';
 const STORE = {};
 
 async function getTrendingMovies() {
-    if (STORE['trending']) {
-        return STORE['trending'];
+    if (STORE['trendingMovies']) {
+        return STORE['trendingMovies'];
     }
 
     const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
-    STORE['trending'] = response;
+    STORE['trendingMovies'] = response;
     return response;
 }
 
 async function getTrendingTV() {
-    if (STORE['trending']) {
-        return STORE['trending'];
+    if (STORE['trendingTV']) {
+        return STORE['trendingTV'];
     }
 
     const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`);
-    STORE['trending'] = response;
+    STORE['trendingTV'] = response;
     return response;
 }
 
