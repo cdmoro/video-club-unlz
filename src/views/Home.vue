@@ -24,7 +24,7 @@ export default {
     }
   },
   async mounted() {
-    const { data } = await CommonController.getTrending();
+    const { data } = await CommonController.getTrendingMovies();
     this.trending = data.results;
   }
 }

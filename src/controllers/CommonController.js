@@ -3,12 +3,22 @@ import axios from 'axios';
 const API_KEY = '7c8c670882ff4356c6aa8fd79464f874';
 const STORE = {};
 
-async function getTrending() {
+async function getTrendingMovies() {
     if (STORE['trending']) {
         return STORE['trending'];
     }
 
-    const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
+    const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`);
+    STORE['trending'] = response;
+    return response;
+}
+
+async function getTrendingTV() {
+    if (STORE['trending']) {
+        return STORE['trending'];
+    }
+
+    const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`);
     STORE['trending'] = response;
     return response;
 }
@@ -38,7 +48,8 @@ async function getEventosDeportivos() {
 }
 
 export default {
-    getTrending,
+    getTrendingMovies,
+    getTrendingTV,
     findMovies,
     getContenidoAdulto,
     getEventosDeportivos
