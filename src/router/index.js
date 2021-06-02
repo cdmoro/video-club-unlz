@@ -6,6 +6,7 @@ import Registro from '../views/Registro.vue'
 import MisPacks from '../views/MisPacks.vue'
 import ComprarPack from '../views/ComprarPack.vue'
 import MisPublicidades from '../views/MisPublicidades.vue'
+import PanelDeControl from '../views/PanelDeControl.vue'
 import Informacion from '../views/Informacion.vue'
 import Search from '../views/Search.vue'
 import Configuracion from '../views/Configuracion.vue'
@@ -43,6 +44,11 @@ const routes = [
     path: '/mis-publicidades',
     name: 'Mis publicidades',
     component: MisPublicidades
+  },
+  {
+    path: '/panel-de-control',
+    name: 'Panel de control',
+    component: PanelDeControl
   },
   {
     path: '/informacion',

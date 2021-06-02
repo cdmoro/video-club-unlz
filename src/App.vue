@@ -192,7 +192,7 @@ export default {
         if (this.$store.getters.isAdmin) {
           menu.push({
             title: "Panel de control",
-            to: "/admin",
+            to: "/panel-de-control",
             icon: "mdi-chart-box",
           });
         }
